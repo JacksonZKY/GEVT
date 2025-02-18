@@ -15,12 +15,12 @@ from scipy.optimize import linear_sum_assignment
 
 # Define the custom dataset class
 class GraphDataset(Dataset):
-    def __init__(self, dataset="NC2017_Dev_Ver1_Img", ratio = (0.01, 0.99)):
-        self.root = "/hdd/keyang/Dataset/"
+    def __init__(self, dataset="NC2017_Dev_Ver1_Img", ratio):
+        self.root = "/hdd/Dataset/"
         self.dataset_name = dataset
         self.dataset = os.path.join(self.root, dataset)
         self.reference = os.path.join(self.dataset, "reference/provenance/")
-        self.world = os.path.join(self.dataset, "world224/")
+        self.world = os.path.join(self.dataset, "world/")
 
         self.transform = transforms.Compose([transforms.Resize((224, 224)),
                                              transforms.ToTensor(),
