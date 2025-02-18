@@ -111,7 +111,6 @@ def retrieve_original_tensors(padded_tensors, masks):
     
     return original_tensors
 
-# Model training function
 def train(model, train_dataloader, val_dataloader, criterion, optimizer, logging, args):
     train_dataloader = train_dataloader
     f_loss_fn = criterion
@@ -161,9 +160,6 @@ def train(model, train_dataloader, val_dataloader, criterion, optimizer, logging
     torch.save(model.state_dict(), args.state_dict_path)
     print("--Model saved--")
 
-
-
-# Define the CLI argument parser
 def parse_args():
     datasets = ["NC2017_Dev_Ver1_Img","MFC18_Dev1_Image_Ver2", "Reddit"]
     parser = argparse.ArgumentParser(description='Training a model using timm and PyTorch.')
