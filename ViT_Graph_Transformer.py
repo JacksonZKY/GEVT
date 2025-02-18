@@ -362,13 +362,3 @@ def get_MST(dist_matrix):
 
     return mst_tensor
     
-
-if __name__ == "__main__":
-    device = torch.device('cuda')
-    model = GraphModel().to(device)
-    images = torch.rand(8,5,3,224,224).to(device)
-    incidence_matrix = torch.randint(0,4,(8,5,5)).to(device)
-    masks = torch.randint(0,4,(8,5)).to(device)
-    masks = torch.where(masks>0,True,False)
-    result = model(images,graph_masks=incidence_matrix, pad_masks=masks)
-    print(result[0].shape, result[1].shape)
