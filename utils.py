@@ -51,8 +51,6 @@ def matrix_overlap(ground_matrices, result_matrices):
 
     return all_undirected_EO, all_EO, all_VEO, all_num
 
-
-
 def get_MST(dist_matrix):
     import numpy as np
     from scipy.sparse import csr_matrix
@@ -75,8 +73,7 @@ def get_MST(dist_matrix):
     mst_tensor = torch.from_numpy(mst_matrix).to(dist_matrix.device)
 
     return mst_tensor
-
-
+  
 def get_result_matrices(self,original_dist_matrices, original_direct_matrices):
     batch_size = len(original_dist_matrices)
     result_matrices = []
