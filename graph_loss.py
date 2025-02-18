@@ -67,6 +67,7 @@ class GraphMatrixLoss(nn.Module):
         loss = 0
         batch_size = len(original_D_path_matrices)
         for batch in range(batch_size):
+            
             ground_UD_matrix = original_UD_path_matrices[batch]
             ground_D_matrix = original_D_path_matrices[batch]
             
@@ -83,8 +84,8 @@ class GraphMatrixLoss(nn.Module):
             dist_loss = -torch.mean(without_diag_ground_dist_matrix*torch.log(without_diag_dist_matrix))
             direct_loss = torch.mean(nn.functional.leaky_relu(direct_matrix*(ground_adjacent_matrix.t()-ground_adjacent_matrix),negative_slope=0.01))
             loss += self.beta*dist_loss+direct_loss
-
+            
         loss /= batch_size
-
+        
         return loss
     
